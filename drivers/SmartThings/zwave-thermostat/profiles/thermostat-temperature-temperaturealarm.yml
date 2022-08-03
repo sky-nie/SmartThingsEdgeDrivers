@@ -10,8 +10,21 @@ components:
     version: 1
   - id: thermostatOperatingState
     version: 1
+    configuration:
+      - values:
+        key: "thermostatOperatingState.value"
+        enabledValues:
+          - Heating
+          - Idle
   - id: temperatureAlarm
     version: 1
+    configuration:
+      - values:
+        key: "thermostatOperatingState.value"
+        enabledValues:
+          - Normal
+          - Overheatiing
+          - Freezing
   - id: refresh
     version: 1
   categories:

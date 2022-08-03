@@ -8,6 +8,13 @@ components:
     version: 1
   - id: temperatureAlarm
     version: 1
+    configuration:
+      - values:
+        key: "thermostatOperatingState.value"
+        enabledValues:
+          - Normal
+          - Overheatiing
+          - Freezing
   - id: tamperAlert
     version: 1
   - id: refresh

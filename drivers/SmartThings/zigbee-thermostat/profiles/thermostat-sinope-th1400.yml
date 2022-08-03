@@ -10,6 +10,12 @@ components:
     version: 1
   - id: thermostatOperatingState
     version: 1
+    configuration:
+      - values:
+        key: "thermostatOperatingState.value"
+        enabledValues:
+          - Heating
+          - Idle
   - id: firmwareUpdate
     version: 1
   - id: refresh
