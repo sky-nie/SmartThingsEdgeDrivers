@@ -19,6 +19,8 @@ components:
         key: "thermostatOperatingState.value"
         enabledValues:
           - Heating
+          - Cooling
+          - Fan only
           - Idle
   - id: relativeHumidityMeasurement
     version: 1
