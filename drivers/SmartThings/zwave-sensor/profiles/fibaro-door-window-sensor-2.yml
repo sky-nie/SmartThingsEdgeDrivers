@@ -11,12 +11,12 @@ components:
   - id: temperatureAlarm
     version: 1
     configuration:
-      - values:
-        key: "thermostatOperatingState.value"
-        enabledValues:
-          - Normal
-          - Overheatiing
-          - Freezing
+      values:
+        - key: "thermostatOperatingState.value"
+          enabledValues:
+            - Normal
+            - Overheating
+            - Freezing
   - id: battery
     version: 1
   - id: refresh

@@ -11,11 +11,11 @@ components:
   - id: thermostatOperatingState
     version: 1
     configuration:
-      - values:
-        key: "thermostatOperatingState.value"
-        enabledValues:
-          - Cooling
-          - Idle
+      values:
+        - key: "thermostatOperatingState.value"
+          enabledValues:
+            - Cooling
+            - Idle
   - id: powerMeter
     version: 1
   - id: energyMeter

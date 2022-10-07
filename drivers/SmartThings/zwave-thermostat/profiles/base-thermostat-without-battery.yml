@@ -15,13 +15,13 @@ components:
   - id: thermostatOperatingState
     version: 1
     configuration:
-      - values:
-        key: "thermostatOperatingState.value"
-        enabledValues:
-          - Heating
-          - Cooling
-          - Fan only
-          - Idle
+      values:
+        - key: "thermostatOperatingState.value"
+          enabledValues:
+            - Heating
+            - Cooling
+            - Fan only
+            - Idle
   - id: refresh
     version: 1
   categories:
