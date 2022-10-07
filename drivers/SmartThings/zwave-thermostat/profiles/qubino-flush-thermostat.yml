@@ -7,9 +7,9 @@ components:
   - id: thermostatHeatingSetpoint
     version: 1
     configuration:
-      - values:
-        key: "temperature.value"
-        range: [-13, 176]
+      values:
+        - key: "temperature.value"
+          range: [-13, 176]
   - id: thermostatMode
     version: 1
   - id: thermostatOperatingState
