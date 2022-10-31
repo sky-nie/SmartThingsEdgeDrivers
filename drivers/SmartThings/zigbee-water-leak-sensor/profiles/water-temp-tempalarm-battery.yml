@@ -6,7 +6,7 @@ components:
     version: 1
   - id: temperatureAlarm
     version: 1
-    configuration:
+    config:
       values:
         - key: "thermostatOperatingState.value"
           enabledValues:

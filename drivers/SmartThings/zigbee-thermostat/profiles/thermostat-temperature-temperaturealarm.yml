@@ -10,7 +10,7 @@ components:
     version: 1
   - id: thermostatOperatingState
     version: 1
-    configuration:
+    config:
       values:
         - key: "thermostatOperatingState.value"
           enabledValues:
@@ -18,7 +18,7 @@ components:
             - Idle
   - id: temperatureAlarm
     version: 1
-    configuration:
+    config:
       values:
         - key: "thermostatOperatingState.value"
           enabledValues:

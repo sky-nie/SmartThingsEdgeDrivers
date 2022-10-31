@@ -8,7 +8,7 @@ components:
     version: 1
   - id: temperatureAlarm
     version: 1
-    configuration:
+    config:
       values:
         - key: "thermostatOperatingState.value"
           enabledValues:
@@ -129,7 +129,7 @@ preferences:
     required: false
     preferenceType: enumeration
     definition:
-      options: 
+      options:
         30: "5 minutes"
         90: "15 minutes"
         180: "30 minutes"
