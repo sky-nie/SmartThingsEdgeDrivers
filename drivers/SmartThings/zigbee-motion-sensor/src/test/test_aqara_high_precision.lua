@@ -31,8 +31,6 @@ local OccupancySensing = clusters.OccupancySensing
 local PREF_FREQUENCY_VALUE_DEFAULT = 60
 local PRIVATE_CLUSTER_ID = 0xFCC0
 local PRIVATE_ATTRIBUTE_ID = 0x0009
-local FREQUENCY_ATTRIBUTE_ID = 0x0102
-local SENSITIVITY_ATTRIBUTE_ID = 0x010C
 local MFG_CODE = 0x115F
 
 local mock_device = test.mock_device.build_test_zigbee_device(
@@ -76,14 +74,6 @@ test.register_coroutine_test(
       cluster_base.write_manufacturer_specific_attribute(mock_device, PRIVATE_CLUSTER_ID, PRIVATE_ATTRIBUTE_ID, MFG_CODE
         ,
         data_types.Uint8, 1) })
-    test.socket.zigbee:__expect_send({
-      mock_device.id,
-      zigbee_test_utils.build_attribute_read(mock_device, PRIVATE_CLUSTER_ID, { FREQUENCY_ATTRIBUTE_ID }, MFG_CODE)
-    })
-    test.socket.zigbee:__expect_send({
-      mock_device.id,
-      zigbee_test_utils.build_attribute_read(mock_device, PRIVATE_CLUSTER_ID, { SENSITIVITY_ATTRIBUTE_ID }, MFG_CODE)
-    })
   end
 )
 

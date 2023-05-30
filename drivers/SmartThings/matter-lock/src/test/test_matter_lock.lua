@@ -16,12 +16,20 @@ local test = require "integration_test"
 local capabilities = require "st.capabilities"
 local t_utils = require "integration_test.utils"
 local clusters = require "st.matter.clusters"
-local im = require "st.matter.interaction_model"
 
 local mock_device_record = {
   profile = t_utils.get_profile_definition("lock-without-codes.yml"),
   manufacturer_info = {vendor_id = 0x101D, product_id = 0x1},
   endpoints = {
+    {
+      endpoint_id = 0,
+      clusters = {
+        {cluster_id = clusters.Basic.ID, cluster_type = "SERVER"},
+      },
+      device_types = {
+        device_type_id = 0x0016, device_type_revision = 1, -- RootNode
+      }
+    },
     {
       endpoint_id = 1,
       clusters = {
@@ -255,32 +263,15 @@ test.register_message_test(
   }
 )
 
-
-test.register_message_test(
-  "Device added clears tamper alert.", {
-    {
-      channel = "device_lifecycle",
-      direction = "receive",
-      message = {
-        mock_device.id,
-        "added",
-      },
-    },
-    {
-      channel = "capability",
-      direction = "send",
-      message = mock_device:generate_test_message("main", capabilities.tamperAlert.tamper.clear()),
-    },
-  }
-)
-
 test.register_coroutine_test(
-  "Profile change on doConfigure lifecycle event due to cluster feature map",
+  "Added lifecycle event lock without codes",
   function()
-    test.socket.device_lifecycle:__queue_receive({ mock_device.id, "doConfigure" })
+    test.socket.device_lifecycle:__queue_receive({ mock_device.id, "added" })
 
     mock_device:expect_metadata_update({ profile = "lock-without-codes" })
-    mock_device:expect_metadata_update({ provisioning_state = "PROVISIONED" })
+    test.socket.capability:__expect_send(
+      mock_device:generate_test_message("main", capabilities.tamperAlert.tamper.clear())
+    )
 end
 )
 

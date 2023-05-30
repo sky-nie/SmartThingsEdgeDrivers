@@ -67,7 +67,6 @@ local do_configure = function(self, device)
   device:send(Thermostat.attributes.OccupiedCoolingSetpoint:configure_reporting(device, 5, 300, 50))
   device:send(Thermostat.attributes.OccupiedHeatingSetpoint:configure_reporting(device, 5, 300, 50))
   device:send(Thermostat.attributes.SystemMode:configure_reporting(device, 5, 300))
-  device:send(Thermostat.attributes.ThermostatRunningMode:configure_reporting(device, 5, 300))
   device:send(Thermostat.attributes.ThermostatRunningState:configure_reporting(device, 5, 300))
   device:send(FanControl.attributes.FanMode:configure_reporting(device, 5, 300))
   device:send(PowerConfiguration.attributes.BatteryVoltage:configure_reporting(device, 30, 21600, 1))
@@ -168,7 +167,7 @@ local thermostat_mode_handler = function(driver, device, thermostat_mode)
   if THERMOSTAT_SYSTEM_MODE_MAP[thermostat_mode.value] then
     local current_supported_modes = device:get_latest_state("main", ThermostatMode.ID, ThermostatMode.supportedThermostatModes.NAME)
     if current_supported_modes then
-      device:emit_event(THERMOSTAT_SYSTEM_MODE_MAP[thermostat_mode.value]({data = {supportedThermostatModes = current_supported_modes, visibility = { displayed = false } }}))
+      device:emit_event(THERMOSTAT_SYSTEM_MODE_MAP[thermostat_mode.value]({data = {supportedThermostatModes = current_supported_modes}}, {visibility = { displayed = false }} ))
     else
       device:emit_event(THERMOSTAT_SYSTEM_MODE_MAP[thermostat_mode.value]())
     end
@@ -194,6 +193,7 @@ local zenwithin_thermostat = {
         [Thermostat.attributes.MaxHeatSetpointLimit.ID] = setpoint_limit_handler(MAX_HEAT_LIMIT),
         [Thermostat.attributes.MinCoolSetpointLimit.ID] = setpoint_limit_handler(MIN_COOL_LIMIT),
         [Thermostat.attributes.MaxCoolSetpointLimit.ID] = setpoint_limit_handler(MAX_COOL_LIMIT),
+        [Thermostat.attributes.ThermostatRunningMode.ID] = function() end
       },
       [PowerConfiguration.ID] = {
         [PowerConfiguration.attributes.BatteryVoltage.ID] = battery_defaults.battery_volt_attr_handler

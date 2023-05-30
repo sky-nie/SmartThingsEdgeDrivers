@@ -25,6 +25,13 @@ local capabilities = require "st.capabilities"
 local constants = require "st.zwave.constants"
 local mock_devices_api = require "integration_test.mock_devices_api"
 
+local BUTTON_VALUES = {
+  "up_hold", "down_hold", "held",
+  "up", "up_2x", "up_3x", "up_4x", "up_5x",
+  "down", "down_2x", "down_3x", "down_4x", "down_5x",
+  "pushed", "pushed_2x", "pushed_3x", "pushed_4x", "pushed_5x"
+}
+
 local zooz_zen_30_dimmer_relay_endpoints = {
   {
     command_classes = {
@@ -45,6 +52,15 @@ local zooz_zen_30_dimmer_relay_endpoints = {
 local parent_profile = test_utils.get_profile_definition("zooz-zen-30-dimmer-relay.yml")
 local child_profile = test_utils.get_profile_definition("child-switch.yml")
 
+local base_parent = test.mock_device.build_test_zwave_device({
+  label = "Zooz Switch",
+  profile = parent_profile,
+  zwave_endpoints = zooz_zen_30_dimmer_relay_endpoints,
+  zwave_manufacturer_id = 0x027A,
+  zwave_product_type = 0xA000,
+  zwave_product_id = 0xA008
+})
+
 local mock_parent = test.mock_device.build_test_zwave_device({
   profile = parent_profile,
   zwave_endpoints = zooz_zen_30_dimmer_relay_endpoints,
@@ -60,6 +76,7 @@ local mock_child = test.mock_device.build_test_child_device({
 })
 
 local function test_init()
+  test.mock_device.add_test_device(base_parent)
   test.mock_device.add_test_device(mock_parent)
   test.mock_device.add_test_device(mock_child)
 end
@@ -207,7 +224,7 @@ test.register_message_test(
               SwitchMultilevel:Report({
                 current_value = SwitchBinary.value.ON_ENABLE,
                 target_value = SwitchBinary.value.ON_ENABLE,
-                duration = constants.DEFAULT_DIMMING_DURATION
+                duration = 0xFF
               }, { src_channel = 0 })
           )
         }
@@ -241,7 +258,7 @@ test.register_message_test(
               SwitchMultilevel:Report({
                 target_value = SwitchBinary.value.OFF_DISABLE,
                 current_value = SwitchBinary.value.OFF_DISABLE,
-                duration = constants.DEFAULT_DIMMING_DURATION
+                duration = 0xFF
               })
           )
         }
@@ -489,7 +506,7 @@ test.register_message_test(
       {
         channel = "capability",
         direction = "send",
-        message = mock_parent:generate_test_message("main", capabilities.button.button.up())
+        message = mock_parent:generate_test_message("main", capabilities.button.button.up({state_change = true}))
       }
     }
 )
@@ -513,7 +530,7 @@ test.register_message_test(
       {
         channel = "capability",
         direction = "send",
-        message = mock_parent:generate_test_message("main", capabilities.button.button.down())
+        message = mock_parent:generate_test_message("main", capabilities.button.button.down({state_change = true}))
       }
     }
 )
@@ -537,7 +554,7 @@ test.register_message_test(
       {
         channel = "capability",
         direction = "send",
-        message = mock_parent:generate_test_message("main", capabilities.button.button.pushed())
+        message = mock_parent:generate_test_message("main", capabilities.button.button.pushed({state_change = true}))
       }
     }
 )
@@ -561,7 +578,7 @@ test.register_message_test(
       {
         channel = "capability",
         direction = "send",
-        message = mock_parent:generate_test_message("main", capabilities.button.button.up_2x())
+        message = mock_parent:generate_test_message("main", capabilities.button.button.up_2x({state_change = true}))
       }
     }
 )
@@ -585,7 +602,7 @@ test.register_message_test(
       {
         channel = "capability",
         direction = "send",
-        message = mock_parent:generate_test_message("main", capabilities.button.button.down_2x())
+        message = mock_parent:generate_test_message("main", capabilities.button.button.down_2x({state_change = true}))
       }
     }
 )
@@ -609,7 +626,7 @@ test.register_message_test(
       {
         channel = "capability",
         direction = "send",
-        message = mock_parent:generate_test_message("main", capabilities.button.button.pushed_2x())
+        message = mock_parent:generate_test_message("main", capabilities.button.button.pushed_2x({state_change = true}))
       }
     }
 )
@@ -633,7 +650,7 @@ test.register_message_test(
       {
         channel = "capability",
         direction = "send",
-        message = mock_parent:generate_test_message("main", capabilities.button.button.up_3x())
+        message = mock_parent:generate_test_message("main", capabilities.button.button.up_3x({state_change = true}))
       }
     }
 )
@@ -657,7 +674,7 @@ test.register_message_test(
       {
         channel = "capability",
         direction = "send",
-        message = mock_parent:generate_test_message("main", capabilities.button.button.down_3x())
+        message = mock_parent:generate_test_message("main", capabilities.button.button.down_3x({state_change = true}))
       }
     }
 )
@@ -681,7 +698,7 @@ test.register_message_test(
       {
         channel = "capability",
         direction = "send",
-        message = mock_parent:generate_test_message("main", capabilities.button.button.pushed_3x())
+        message = mock_parent:generate_test_message("main", capabilities.button.button.pushed_3x({state_change = true}))
       }
     }
 )
@@ -705,7 +722,7 @@ test.register_message_test(
       {
         channel = "capability",
         direction = "send",
-        message = mock_parent:generate_test_message("main", capabilities.button.button.up_4x())
+        message = mock_parent:generate_test_message("main", capabilities.button.button.up_4x({state_change = true}))
       }
     }
 )
@@ -729,7 +746,7 @@ test.register_message_test(
       {
         channel = "capability",
         direction = "send",
-        message = mock_parent:generate_test_message("main", capabilities.button.button.down_4x())
+        message = mock_parent:generate_test_message("main", capabilities.button.button.down_4x({state_change = true}))
       }
     }
 )
@@ -753,7 +770,7 @@ test.register_message_test(
       {
         channel = "capability",
         direction = "send",
-        message = mock_parent:generate_test_message("main", capabilities.button.button.pushed_4x())
+        message = mock_parent:generate_test_message("main", capabilities.button.button.pushed_4x({state_change = true}))
       }
     }
 )
@@ -777,7 +794,7 @@ test.register_message_test(
       {
         channel = "capability",
         direction = "send",
-        message = mock_parent:generate_test_message("main", capabilities.button.button.up_5x())
+        message = mock_parent:generate_test_message("main", capabilities.button.button.up_5x({state_change = true}))
       }
     }
 )
@@ -801,7 +818,7 @@ test.register_message_test(
       {
         channel = "capability",
         direction = "send",
-        message = mock_parent:generate_test_message("main", capabilities.button.button.down_5x())
+        message = mock_parent:generate_test_message("main", capabilities.button.button.down_5x({state_change = true}))
       }
     }
 )
@@ -825,7 +842,7 @@ test.register_message_test(
       {
         channel = "capability",
         direction = "send",
-        message = mock_parent:generate_test_message("main", capabilities.button.button.pushed_5x())
+        message = mock_parent:generate_test_message("main", capabilities.button.button.pushed_5x({state_change = true}))
       }
     }
 )
@@ -849,7 +866,7 @@ test.register_message_test(
       {
         channel = "capability",
         direction = "send",
-        message = mock_parent:generate_test_message("main", capabilities.button.button.up_hold())
+        message = mock_parent:generate_test_message("main", capabilities.button.button.up_hold({state_change = true}))
       }
     }
 )
@@ -873,7 +890,7 @@ test.register_message_test(
       {
         channel = "capability",
         direction = "send",
-        message = mock_parent:generate_test_message("main", capabilities.button.button.down_hold())
+        message = mock_parent:generate_test_message("main", capabilities.button.button.down_hold({state_change = true}))
       }
     }
 )
@@ -897,7 +914,7 @@ test.register_message_test(
       {
         channel = "capability",
         direction = "send",
-        message = mock_parent:generate_test_message("main", capabilities.button.button.held())
+        message = mock_parent:generate_test_message("main", capabilities.button.button.held({state_change = true}))
       }
     }
 )
@@ -1004,6 +1021,67 @@ test.register_coroutine_test(
         })
       })
 
+    end
+)
+
+test.register_coroutine_test(
+    "Added lifecycle event should create children for parent device",
+    function()
+      test.socket.zwave:__set_channel_ordering("relaxed")
+      test.socket.device_lifecycle:__queue_receive({ base_parent.id, "added" })
+      base_parent:expect_device_create(
+          {
+            type = "EDGE_CHILD",
+            label = "Zooz Switch Relay",
+            profile = "child-switch",
+            parent_device_id = base_parent.id,
+            parent_assigned_child_key = "01"
+          }
+      )
+      test.socket.capability:__expect_send(
+          base_parent:generate_test_message(
+              "main",
+              capabilities.button.supportedButtonValues(BUTTON_VALUES, { visibility = { displayed = false } })
+          )
+      )
+      test.socket.capability:__expect_send(
+          base_parent:generate_test_message(
+              "main",
+              capabilities.button.numberOfButtons({ value = 3 }, { visibility = { displayed = false } })
+          )
+      )
+      test.socket.zwave:__expect_send(
+          zw_test_utils.zwave_test_build_send_command(
+              base_parent,
+              SwitchMultilevel:Get({},
+                  { encap = zw.ENCAP.AUTO, src_channel = 0, dst_channels = { 0 } }
+              )
+          )
+      )
+      test.socket.zwave:__expect_send(
+          zw_test_utils.zwave_test_build_send_command(
+              base_parent,
+              Version:Get({},
+                  { encap = zw.ENCAP.AUTO, src_channel = 0, dst_channels = {} }
+              )
+          )
+      )
+    end
+)
+
+test.register_coroutine_test(
+    "Added lifecycle event should refresh child device",
+    function()
+      test.socket.zwave:__set_channel_ordering("relaxed")
+      test.socket.device_lifecycle:__queue_receive({ mock_child.id, "added" })
+      test.socket.zwave:__expect_send(
+          zw_test_utils.zwave_test_build_send_command(
+              mock_parent,
+              SwitchBinary:Get({},
+                  { encap = zw.ENCAP.AUTO, src_channel = 0, dst_channels = { 1 } }
+              )
+          )
+      )
     end
 )
 

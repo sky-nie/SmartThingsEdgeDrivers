@@ -193,10 +193,6 @@ test.register_coroutine_test(
       })
       test.socket.zigbee:__expect_send({
         mock_device.id,
-        Thermostat.attributes.ThermostatRunningMode:configure_reporting(mock_device, 5, 300)
-      })
-      test.socket.zigbee:__expect_send({
-        mock_device.id,
         Thermostat.attributes.ThermostatRunningState:configure_reporting(mock_device, 5, 300)
       })
       test.socket.zigbee:__expect_send({
@@ -253,10 +249,6 @@ test.register_coroutine_test(
       test.socket.zigbee:__expect_send({
         mock_device.id,
         Thermostat.attributes.SystemMode:configure_reporting(mock_device, 5, 300)
-      })
-      test.socket.zigbee:__expect_send({
-        mock_device.id,
-        Thermostat.attributes.ThermostatRunningMode:configure_reporting(mock_device, 5, 300)
       })
       test.socket.zigbee:__expect_send({
         mock_device.id,
@@ -319,7 +311,9 @@ test.register_coroutine_test(
         }
       )
       test.socket.capability:__expect_send(
-        mock_device:generate_test_message("main", capabilities.thermostatMode.thermostatMode.cool({data={supportedThermostatModes={ "off", "auto", "heat", "cool" }, visibility = { displayed = false }}}))
+        mock_device:generate_test_message("main", capabilities.thermostatMode.thermostatMode.cool(
+          {data={supportedThermostatModes={ "off", "auto", "heat", "cool" }},
+          {visibility = { displayed = false }}}))
       )
       test.wait_for_events()
       test.mock_time.advance_time(10)
@@ -402,7 +396,9 @@ test.register_coroutine_test(
         }
       )
       test.socket.capability:__expect_send(
-        mock_device:generate_test_message("main", capabilities.thermostatMode.thermostatMode.heat({data={supportedThermostatModes={ "off", "auto", "heat", "cool" }, visibility = { displayed = false }}}))
+        mock_device:generate_test_message("main", capabilities.thermostatMode.thermostatMode.heat(
+          {data={supportedThermostatModes={ "off", "auto", "heat", "cool" }}},
+          {visibility = { displayed = false }}))
       )
       test.wait_for_events()
       test.timer.__create_and_queue_test_time_advance_timer(2, "oneshot")
@@ -453,6 +449,18 @@ test.register_coroutine_test(
     test.mock_time.advance_time(2)
     test.wait_for_events()
   end
+)
+
+test.register_message_test(
+    "Thermostat running mode reports are NOT handled",
+    {
+      {
+        channel = "zigbee",
+        direction = "receive",
+        message = { mock_device.id, Thermostat.attributes.ThermostatRunningMode:build_test_attr_report(mock_device,
+                                                                                                        3), }
+      }
+    }
 )
 
 test.run_registered_tests()
