@@ -14,6 +14,7 @@
 
 local cc = require "st.zwave.CommandClass"
 local capabilities = require "st.capabilities"
+local Association = (require "st.zwave.CommandClass.Association")({ version = 2 })
 local Battery = (require "st.zwave.CommandClass.Battery")({ version = 1 })
 local Configuration = (require "st.zwave.CommandClass.Configuration")({ version = 2 })
 local Notification = (require "st.zwave.CommandClass.Notification")({ version = 3 })
@@ -32,6 +33,7 @@ local FIBARO_DOOR_WINDOW_SENSOR_FINGERPRINTS = {
   { manufacturerId = 0x010F, prod = 0x0702, productId = 0x3000 }, -- Fibaro Open/Closed Sensor 2 (FGDW-002) / ANZ
   { manufacturerId = 0x010F, prod = 0x0701, productId = 0x2001 }, -- Fibaro Open/Closed Sensor with temperature (FGK-10X) / NA
   { manufacturerId = 0x010F, prod = 0x0701, productId = 0x1001 }, -- Fibaro Open/Closed Sensor
+  { manufacturerId = 0x0312, prod = 0x0713, productId = 0xD100 }, -- Minoston Door/Window Sensor with temperature (MSE30Z)
   { manufacturerId = 0x010F, prod = 0x0501, productId = 0x1002 }  -- Fibaro Open/Closed Sensor
 }
 
@@ -90,8 +92,14 @@ local function do_refresh(self, device)
   if (device:supports_capability_by_id(capabilities.contactSensor.ID) and device:is_cc_supported(cc.SENSOR_BINARY)) then
     device:send(SensorBinary:Get({}))
   end
-  if (device:supports_capability_by_id(capabilities.temperatureMeasurement.ID) and device:is_cc_supported(cc.SENSOR_MULTILEVEL )) then
-    device:send(SensorMultilevel:Get({sensor_type = SensorMultilevel.sensor_type.TEMPERATURE}))
+
+  if (device:is_cc_supported(cc.SENSOR_MULTILEVEL )) then
+    if (device:supports_capability_by_id(capabilities.temperatureMeasurement.ID)) then
+      device:send(SensorMultilevel:Get({sensor_type = SensorMultilevel.sensor_type.TEMPERATURE}))
+    end
+    if (device:supports_capability_by_id(capabilities.relativeHumidityMeasurement.ID)) then
+      device:send(SensorMultilevel:Get({sensor_type = SensorMultilevel.sensor_type.RELATIVE_HUMIDITY}))
+    end
   end
 end
 
