@@ -1,4 +1,106 @@
 zwaveManufacturer:
+  - id: "Evalogik/ZKS31"
+    deviceLabel: Evalogik Smart Dimmer Switch
+    manufacturerId: 0x0312
+    productType: 0x7000
+    productId: 0x7002
+    deviceProfileName: evalogik-dimmer-button
+  - id: "Evalogik/ZW30S"
+    deviceLabel: Evalogik Switch
+    manufacturerId: 0x0312
+    productType: 0xBB00
+    productId: 0xBB01
+    deviceProfileName: switch-binary
+  - id: "Evalogik/ZW30TS"
+    deviceLabel: Evalogik Switch
+    manufacturerId: 0x0312
+    productType: 0xBB00
+    productId: 0xBB03
+    deviceProfileName: switch-binary
+  - id: "Minoston/MS10ZS"
+    deviceLabel: Minoston Switch
+    manufacturerId: 0x0312
+    productType: 0xEE00
+    productId: 0xEE01
+    deviceProfileName: switch-binary
+  - id: "Minoston/MS12ZS"
+    deviceLabel: Minoston Switch
+    manufacturerId: 0x0312
+    productType: 0xEE00
+    productId: 0xEE03
+    deviceProfileName: switch-binary
+  - id: "Minoston/MP21Z-pro"
+    deviceLabel: Minoston Outlet
+    manufacturerId: 0x0312
+    productType: 0xC000
+    productId: 0xC009
+    deviceProfileName: smartplug-binary
+  - id: "Evalogik/ZW30"
+    deviceLabel: Evalogik Switch
+    manufacturerId: 0x0312
+    productType: 0xA000
+    productId: 0xA005
+    deviceProfileName: switch-binary
+  - id: "Minoston/MP21Z"
+    deviceLabel: Minoston Outlet
+    manufacturerId: 0x0312
+    productType: 0xFF00
+    productId: 0xFF0C
+    deviceProfileName: smartplug-binary
+  - id: "NewOne/N4001"
+    deviceLabel: New One Outlet
+    manufacturerId: 0x0312
+    productType: 0xAC01
+    productId: 0x4001
+    deviceProfileName: smartplug-binary
+  - id: "Evalogik/ZW31S"
+    deviceLabel: Evalogik Dimmer Switch
+    manufacturerId: 0x0312
+    productType: 0xBB00
+    productId: 0xBB02
+    deviceProfileName: switch-level
+  - id: "Evalogik/ZW31TS"
+    deviceLabel: Evalogik Dimmer Switch
+    manufacturerId: 0x0312
+    productType: 0xBB00
+    productId: 0xBB04
+    deviceProfileName: switch-level
+  - id: "Minoston/MS11ZS"
+    deviceLabel: Minoston Dimmer Switch
+    manufacturerId: 0x0312
+    productType: 0x0004
+    productId: 0xEE02
+    deviceProfileName: switch-level
+  - id: "Minoston/MS13ZS"
+    deviceLabel: Minoston Dimmer Switch
+    manufacturerId: 0x0312
+    productType: 0xEE00
+    productId: 0xEE04
+    deviceProfileName: switch-level
+  - id: "Minoston/MP21ZD"
+    deviceLabel: Minoston Outlet
+    manufacturerId: 0x0312
+    productType: 0xFF00
+    productId: 0xFF0D
+    deviceProfileName: switch-level-plug
+  - id: "Minoston/MP22ZD"
+    deviceLabel: Minoston Outdoor Dimmer
+    manufacturerId: 0x0312
+    productType: 0xFF07
+    productId: 0xFF03
+    deviceProfileName: switch-level-plug
+  - id: "New One/N4002"
+    deviceLabel: New One Smart Plug Dimmer
+    manufacturerId: 0x0312
+    productType: 0xAC01
+    productId: 0x4002
+    deviceProfileName: switch-level-plug
+  - id: 0312/FF01/FF97
+    deviceLabel: Minoston Outlet 1
+    manufacturerId: 0x0312
+    productType: 0xFF01
+    productId: 0xFF97
+    deviceProfileName: switch-binary
   - id: "GE/Switch/01"
     deviceLabel: GE Switch 01
     manufacturerId: 0x0063
@@ -396,11 +498,12 @@ zwaveManufacturer:
     manufacturerId: 0x0063
     productType: 0x5257
     deviceProfileName: switch-binary-indicator
-  - id: 0063/5052
+  - id: 0063/5052/3139
     deviceLabel: GE Switch
     manufacturerId: 0x0063
     productType: 0x5052
-    deviceProfileName: switch-binary-indicator
+    productId: 0x3139
+    deviceProfileName: switch-binary-in-pr
   - id: 0113/5257
     deviceLabel: Evolve Switch
     manufacturerId: 0x0113
