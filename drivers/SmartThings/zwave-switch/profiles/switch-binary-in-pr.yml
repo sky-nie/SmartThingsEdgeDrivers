@@ -1,0 +1,55 @@
+name: switch-binary-in-pr
+components:
+- id: main
+  capabilities:
+    - id: switch
+      version: 1
+    - id: refresh
+      version: 1
+  categories:
+    - name: Switch
+preferences:
+  - name: "ledIndicator"
+    title: "LED Light Mode"
+    description: "Set the LED Light Mode"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "LED ON When device is OFF"
+        1: "LED ON When device is ON"
+        2: "LED always OFF"
+        3: "LED always ON"
+      default: 1
+  - name: "ledBrightnessParam"
+    title: "LED brightness"
+    description: "Set the LED brightness"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Low"
+        1: "Medium"
+        2: "Bright"
+      default: 0
+  - name: "powerFailureRecovery"
+    title: "Restore status after power failure"
+    description: "Action in case of power out"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Last Status"
+        1: "Power ON"
+        2: "Power OFF"
+      default: 0
+  - name: "defaultAfterResetFactory"
+    title: "Reset Factory Default"
+    description: "Reset Switch to Factory Defaults"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "No specific behavior"
+        1: "Reset to factory defaults"
+      default: 0
