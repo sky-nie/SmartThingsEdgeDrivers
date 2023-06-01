@@ -537,6 +537,12 @@ zwaveManufacturer:
     productType: 0x0000
     productId: 0x0001
     deviceProfileName: base-water
+  - id: "Minoston/MSE30Z"
+    deviceLabel: Minoston 3-in-1 Sensor
+    manufacturerId: 0x0312
+    productType: 0x0713
+    productId: 0xD100
+    deviceProfileName: minoston-door-window-sensor-temperature
 zwaveGeneric:
   - id: "GenericSensorAlarm"
     deviceLabel: Z-Wave Sensor
