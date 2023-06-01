@@ -18,6 +18,7 @@ local defaults = require "st.zwave.defaults"
 --- @type st.zwave.Driver
 local ZwaveDriver = require "st.zwave.driver"
 local configsMap = require "configurations"
+local log = require "log"
 
 local function added_handler(self, device)
   device:refresh()
@@ -26,6 +27,8 @@ local function added_handler(self, device)
     for _, comp in pairs(device.profile.components) do
       if device:supports_capability_by_id(capabilities.button.ID, comp.id) then
         local number_of_buttons = comp.id == "main" and configs.number_of_buttons or 1
+        log.info("number of buttons:",number_of_buttons)
+        log.info("supported_button_values:",configs.supported_button_values)
         device:emit_component_event(comp, capabilities.button.numberOfButtons({ value=number_of_buttons }, { visibility = { displayed = false } }))
         device:emit_component_event(comp, capabilities.button.supportedButtonValues(configs.supported_button_values, { visibility = { displayed = false } }))
       end
