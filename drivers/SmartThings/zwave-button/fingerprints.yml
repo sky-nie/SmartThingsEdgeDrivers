@@ -67,3 +67,15 @@ zwaveManufacturer:
     manufacturerId: 0x0086
     productId: 0x0026
     deviceProfileName: button-generic
+  - id: Minoston/wallmote
+    deviceLabel: Minoston Remote Control
+    manufacturerId: 0x0312
+    productType: 0x0924
+    productId: 0xD001
+    deviceProfileName: multi-button-4
+  - id: "Evalogik/ZKS31"
+    deviceLabel: Evalogik Smart Dimmer Switch
+    manufacturerId: 0x0312
+    productType: 0x7000
+    productId: 0x7002
+    deviceProfileName: evalogik-dimmer-button
