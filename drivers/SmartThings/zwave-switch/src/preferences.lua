@@ -313,10 +313,57 @@ local devices = {
   SWITCH_BINARY_INDICATOR = {
     MATCHING_MATRIX = {
       mfrs = {0x0063, 0113},
-      product_types = {0x4952, 0x5257, 0x5052}
+      product_types = {0x4952, 0x5257}
     },
     PARAMETERS = {
       ledIndicator = {parameter_number = 3, size = 1}
+    }
+  },
+  SWITCH_BINARY_IN_PR = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0063,
+      product_types = 0x5052,
+      product_ids = 0x3139
+    },
+    PARAMETERS = {
+      ledIndicator = {parameter_number = 3, size = 1},
+      ledBrightnessParam = {parameter_number = 41, size = 1},
+      powerFailureRecovery = {parameter_number = 42, size = 1},
+      defaultAfterResetFactory = {parameter_number = 84, size = 1}
+    }
+  },
+  EAVLOGIK_DIMMER_BUTTON = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0312,
+      product_types = 0x7000,
+      product_ids = 0x7002
+    },
+    PARAMETERS = {
+      configParam1 = {parameter_number = 1, size = 1},
+      configParam2 = {parameter_number = 1, size = 1},
+      configParam3 = {parameter_number = 3, size = 1},
+      configParam4 = {parameter_number = 4, size = 1},
+      configParam5 = {parameter_number = 5, size = 1},
+      configParam6 = {parameter_number = 6, size = 1},
+      configParam7 = {parameter_number = 7, size = 1},
+      configParam8 = {parameter_number = 8, size = 1},
+      configParam9 = {parameter_number = 9, size = 1},
+      configParam10 = {parameter_number = 10, size = 1},
+      configParam11 = {parameter_number = 11, size = 1},
+      configParam12 = {parameter_number = 12, size = 1},
+      configParam13 = {parameter_number = 13, size = 1},
+      configParam14 = {parameter_number = 14, size = 4},
+      configParam15 = {parameter_number = 15, size = 4},
+      configParam16 = {parameter_number = 16, size = 1},
+      configParam17 = {parameter_number = 17, size = 1},
+      configParam18 = {parameter_number = 18, size = 1},
+      configParam19 = {parameter_number = 19, size = 1},
+      configParam20 = {parameter_number = 20, size = 1},
+      configParam21 = {parameter_number = 21, size = 1},
+      configParam22 = {parameter_number = 22, size = 1},
+      configParam23 = {parameter_number = 23, size = 1},
+      configParam24 = {parameter_number = 24, size = 1},
+      configParam25 = {parameter_number = 25, size = 1}
     }
   }
 }

@@ -195,6 +195,53 @@ local devices = {
       {parameter_number = 102, size = 4, configuration_value = 0},
       {parameter_number = 103, size = 4, configuration_value = 0}
     }
+  },
+  SWITCH_BINARY_IN_PR = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0063,
+      product_types = 0x5052,
+      product_ids = 0x3139
+    },
+    CONFIGURATION = {
+      {parameter_number = 3, size = 1, configuration_value = 1},
+      {parameter_number = 41, size = 1, configuration_value = 0},
+      {parameter_number = 42, size = 1, configuration_value = 0},
+      {parameter_number = 84, size = 1, configuration_value = 0}
+    }
+  },
+  EAVLOGIK_DIMMER_BUTTON = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0312,
+      product_types = 0x7000,
+      product_ids = 0x7002
+    },
+    CONFIGURATION = {
+      {parameter_number = 1, size = 1, configuration_value = 0},
+      {parameter_number = 2, size = 1, configuration_value = 0},
+      {parameter_number = 3, size = 1, configuration_value = 50},
+      {parameter_number = 4, size = 1, configuration_value = 2},
+      {parameter_number = 5, size = 1, configuration_value = 100},
+      {parameter_number = 6, size = 1, configuration_value = 20},
+      {parameter_number = 7, size = 1, configuration_value = 0},
+      {parameter_number = 8, size = 1, configuration_value = 255},
+      {parameter_number = 9, size = 1, configuration_value = 1},
+      {parameter_number = 10, size = 1, configuration_value = 2},
+      {parameter_number = 11, size = 1, configuration_value = 2},
+      {parameter_number = 12, size = 1, configuration_value = 2},
+      {parameter_number = 13, size = 1, configuration_value = 2},
+      {parameter_number = 14, size = 4, configuration_value = 0},
+      {parameter_number = 15, size = 4, configuration_value = 0},
+      {parameter_number = 16, size = 1, configuration_value = 0},
+      {parameter_number = 17, size = 1, configuration_value = 0},
+      {parameter_number = 18, size = 1, configuration_value = 0},
+      {parameter_number = 19, size = 1, configuration_value = 0},
+      {parameter_number = 20, size = 1, configuration_value = 1},
+      {parameter_number = 21, size = 1, configuration_value = 2},
+      {parameter_number = 22, size = 1, configuration_value = 255},
+      {parameter_number = 23, size = 1, configuration_value = 255},
+      {parameter_number = 24, size = 1, configuration_value = 0},
+      {parameter_number = 25, size = 1, configuration_value = 80}
+    }
   }
 }
 
