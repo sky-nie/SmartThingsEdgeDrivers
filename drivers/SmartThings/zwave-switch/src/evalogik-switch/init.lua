@@ -60,7 +60,8 @@ local map_key_attribute_to_capability = {
   [CentralScene.key_attributes.KEY_PRESSED_2_TIMES] = capabilities.button.button.double,
   [CentralScene.key_attributes.KEY_PRESSED_3_TIMES] = capabilities.button.button.pushed_3x,
   [CentralScene.key_attributes.KEY_PRESSED_4_TIMES] = capabilities.button.button.pushed_4x,
-  [CentralScene.key_attributes.KEY_PRESSED_5_TIMES] = capabilities.button.button.pushed_5x
+  [CentralScene.key_attributes.KEY_PRESSED_5_TIMES] = capabilities.button.button.pushed_5x,
+  [CentralScene.key_attributes.KEY_PRESSED_6_TIMES] = capabilities.button.button.pushed_6x,
 }
 
 local function central_scene_notification_handler(self, device, cmd)
@@ -101,30 +102,6 @@ local function scene_activation_handler(self, device, cmd)
   local event = scene_id % 2 == 0 and capabilities.button.button.held or capabilities.button.button.pushed
   device:emit_event_for_endpoint((scene_id + 1) // 2, event({state_change = true}))
   device:emit_event(event({state_change = true}))
-end
-
-local function component_to_endpoint(device, component_id)
-  local ep_num = component_id:match("button(%d)")
-  log.info("2.component_to_endpoint ep_num = ",ep_num)
-  return { ep_num and tonumber(ep_num) }
-end
-
-local function endpoint_to_component(device, ep)
-  log.info("2.endpoint_to_component ep = ",ep)
-  local button_comp = string.format("button%d", ep)
-  log.info("2.endpoint_to_component button_comp = ",button_comp)
-  if device.profile.components[button_comp] ~= nil then
-    log.info("2.endpoint_to_component return ",button_comp)
-    return button_comp
-  else
-    log.info("2.endpoint_to_component return main")
-    return "main"
-  end
-end
-
-local function device_init(self, device)
-  device:set_component_to_endpoint_fn(component_to_endpoint)
-  device:set_endpoint_to_component_fn(endpoint_to_component)
 end
 
 local do_configure = function(self, device)
