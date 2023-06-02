@@ -332,6 +332,103 @@ local devices = {
       defaultAfterResetFactory = {parameter_number = 84, size = 1}
     }
   },
+  SWITCH_BINARY_PR = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0312,
+      product_types = {0xEE00, 0xA000, 0xBB00},
+      product_ids = {0xEE01, 0xEE03, 0xA005, 0xBB01, 0xBB03}
+    },
+    PARAMETERS = {
+      paddleControlParam = {parameter_number = 1, size = 1},
+      ledModeParam = {parameter_number = 2, size = 1},
+      autoOffIntervalParam = {parameter_number = 4, size = 4},
+      autoOnIntervalParam = {parameter_number = 6, size = 4},
+      powerFailureRecoveryParam = {parameter_number = 8, size = 1}
+    }
+  },
+  SMARTPLUG_BINARY_PR = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0312,
+      product_types = {0xC000, 0xFF00, 0xAC01},
+      product_ids = {0xC009, 0xFF0C, 0x4001}
+    },
+    PARAMETERS = {
+      ledModeParam = {parameter_number = 1, size = 1},
+      autoOffIntervalParam = {parameter_number = 2, size = 4},
+      autoOnIntervalParam = {parameter_number = 4, size = 4},
+      powerFailureRecoveryParam = {parameter_number = 6, size = 1}
+    }
+  },
+  SWITCH_LEVEL_PR = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0312,
+      product_types = {0xEE00, 0x0004, 0xBB00},
+      product_ids = {0xEE02, 0xEE04, 0xBB02, 0xBB04}
+    },
+    PARAMETERS = {
+      paddleControlParam = {parameter_number = 1, size = 1},
+      ledModeParam = {parameter_number = 2, size = 1},
+      autoOffIntervalParam = {parameter_number = 4, size = 4},
+      autoOnIntervalParam = {parameter_number = 6, size = 4},
+      powerFailureRecoveryParam = {parameter_number = 8, size = 1},
+      pushDimmingDurationParam = {parameter_number = 9, size = 1},
+      holdDimmingDurationParam = {parameter_number = 10, size = 4},
+      minimumBrightnessParam = {parameter_number = 11, size = 1},
+      maximumBrightnessParam = {parameter_number = 12, size = 1}
+    }
+  },
+  SWITCH_LEVEL_PLUG_PR = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0312,
+      product_types = {0xFF07, 0xAC01},
+      product_ids = {0xFF03, 0x4002}
+    },
+    PARAMETERS = {
+      ledModeParam = {parameter_number = 2, size = 1},
+      autoOffIntervalParam = {parameter_number = 4, size = 4},
+      autoOnIntervalParam = {parameter_number = 6, size = 4},
+      paddleControlParam = {parameter_number = 7, size = 1},
+      powerFailureRecoveryParam = {parameter_number = 8, size = 1},
+      pushDimmingDurationParam = {parameter_number = 9, size = 1},
+      holdDimmingDurationParam = {parameter_number = 10, size = 4},
+      minimumBrightnessParam = {parameter_number = 11, size = 1},
+      maximumBrightnessParam = {parameter_number = 12, size = 1}
+    }
+  },
+  SWITCH_LEVEL_PLUG_PR1 = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0312,
+      product_types = 0xFF00,
+      product_ids = 0xFF0D
+    },
+    PARAMETERS = {
+      ledModeParam = {parameter_number = 2, size = 1},
+      autoOffIntervalParam = {parameter_number = 4, size = 4},
+      autoOnIntervalParam = {parameter_number = 6, size = 4},
+      paddleControlParam = {parameter_number = 7, size = 1},
+      powerFailureRecoveryParam = {parameter_number = 8, size = 1},
+      pushDimmingDurationParam = {parameter_number = 9, size = 1},
+      holdDimmingDurationParam = {parameter_number = 10, size = 4},
+      minimumBrightnessParam = {parameter_number = 11, size = 1},
+      maximumBrightnessParam = {parameter_number = 12, size = 1}
+    }
+  },
+  SKYNIE_DUAL_SWITCH = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0312,
+      product_types = {0xFF01, 0xAC01, 0xC000},
+      product_ids = {0xFF97, 0x009, 0xC007}
+    },
+    PARAMETERS = {
+      ledModeParam = {parameter_number = 1, size = 1},
+      autoOffIntervalLeftParam = {parameter_number = 2, size = 4},
+      autoOffIntervalRightParam = {parameter_number = 3, size = 4},
+      autoOnIntervalLeftParam = {parameter_number = 4, size = 4},
+      autoOnIntervalRightParam = {parameter_number = 5, size = 4},
+      powerFailureRecoveryParam = {parameter_number = 6, size = 1},
+      ledBrightnessParam = {parameter_number = 7, size = 1}
+    }
+  },
   EAVLOGIK_DIMMER_BUTTON = {
     MATCHING_MATRIX = {
       mfrs = 0x0312,

@@ -196,6 +196,103 @@ local devices = {
       {parameter_number = 103, size = 4, configuration_value = 0}
     }
   },
+  SWITCH_BINARY_PR = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0312,
+      product_types = {0xEE00, 0xA000, 0xBB00},
+      product_ids = {0xEE01, 0xEE03, 0xA005, 0xBB01, 0xBB03}
+    },
+    CONFIGURATION = {
+      {parameter_number = 1, size = 1, configuration_value = 0},
+      {parameter_number = 2, size = 1, configuration_value = 0},
+      {parameter_number = 4, size = 4, configuration_value = 0},
+      {parameter_number = 6, size = 4, configuration_value = 0},
+      {parameter_number = 8, size = 1, configuration_value = 2}
+    }
+  },
+  SMARTPLUG_BINARY_PR = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0312,
+      product_types = {0xC000, 0xFF00, 0xAC01},
+      product_ids = {0xC009, 0xFF0C, 0x4001}
+    },
+    CONFIGURATION = {
+      {parameter_number = 1, size = 1, configuration_value = 0},
+      {parameter_number = 2, size = 4, configuration_value = 0},
+      {parameter_number = 4, size = 4, configuration_value = 0},
+      {parameter_number = 6, size = 1, configuration_value = 2}
+    }
+  },
+  SWITCH_LEVEL_PR = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0312,
+      product_types = {0xEE00, 0x0004, 0xBB00},
+      product_ids = {0xEE02, 0xEE04, 0xBB02, 0xBB04}
+    },
+    CONFIGURATION = {
+      {parameter_number = 1, size = 1, configuration_value = 0},
+      {parameter_number = 2, size = 1, configuration_value = 0},
+      {parameter_number = 4, size = 4, configuration_value = 0},
+      {parameter_number = 6, size = 4, configuration_value = 0},
+      {parameter_number = 8, size = 1, configuration_value = 2},
+      {parameter_number = 9, size = 1, configuration_value = 1},
+      {parameter_number = 10, size = 4, configuration_value = 4},
+      {parameter_number = 11, size = 1, configuration_value = 10},
+      {parameter_number = 12, size = 1, configuration_value = 99}
+    }
+  },
+  SWITCH_LEVEL_PLUG_PR = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0312,
+      product_types = {0xFF07, 0xAC01},
+      product_ids = {0xFF03, 0x4002}
+    },
+    CONFIGURATION = {
+      {parameter_number = 2, size = 1, configuration_value = 0},
+      {parameter_number = 4, size = 4, configuration_value = 0},
+      {parameter_number = 6, size = 4, configuration_value = 0},
+      {parameter_number = 7, size = 1, configuration_value = 2},
+      {parameter_number = 8, size = 1, configuration_value = 2},
+      {parameter_number = 9, size = 1, configuration_value = 2},
+      {parameter_number = 10, size = 4, configuration_value = 4},
+      {parameter_number = 11, size = 1, configuration_value = 10},
+      {parameter_number = 12, size = 1, configuration_value = 99}
+    }
+  },
+  SWITCH_LEVEL_PLUG_PR1 = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0312,
+      product_types = 0xFF00,
+      product_ids = 0xFF0D
+    },
+    CONFIGURATION = {
+      {parameter_number = 2, size = 1, configuration_value = 0},
+      {parameter_number = 4, size = 4, configuration_value = 0},
+      {parameter_number = 6, size = 4, configuration_value = 0},
+      {parameter_number = 7, size = 1, configuration_value = 2},
+      {parameter_number = 8, size = 1, configuration_value = 2},
+      {parameter_number = 9, size = 1, configuration_value = 2},
+      {parameter_number = 10, size = 4, configuration_value = 4},
+      {parameter_number = 11, size = 1, configuration_value = 10},
+      {parameter_number = 12, size = 1, configuration_value = 99}
+    }
+  },
+  SKYNIE_DUAL_SWITCH = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0312,
+      product_types = {0xFF01, 0xAC01, 0xC000},
+      product_ids = {0xFF97, 0x0097, 0xC007}
+    },
+    CONFIGURATION = {
+      ledModeParam = {parameter_number = 1, size = 1, configuration_value = 0},
+      autoOffIntervalLeftParam = {parameter_number = 2, size = 4, configuration_value = 0},
+      autoOffIntervalRightParam = {parameter_number = 3, size = 4, configuration_value = 0},
+      autoOnIntervalLeftParam = {parameter_number = 4, size = 4, configuration_value = 0},
+      autoOnIntervalRightParam = {parameter_number = 5, size = 4, configuration_value = 0},
+      powerFailureRecoveryParam = {parameter_number = 6, size = 1, configuration_value = 2},
+      ledBrightnessParam = {parameter_number = 7, size = 1, configuration_value = 2}
+    }
+  },
   SWITCH_BINARY_IN_PR = {
     MATCHING_MATRIX = {
       mfrs = 0x0063,
