@@ -35,7 +35,6 @@ local ZWAVE_MULTI_BUTTON_FINGERPRINTS = {
   {mfr = 0x0060, prod = 0x000A, model = 0x0003}, -- Everspring Remote Control
   {mfr = 0x0086, prod = 0x0001, model = 0x0003}, -- Aeotec Mimimote,
   {mfr = 0x0371, prod = 0x0102, model = 0x0016}, -- Aeotec illumino Wallmote 7
-  --{mfr = 0x0312, prod = 0x7000, model = 0x7002}, -- EVALOGIK DIMMER BUTTON
   {mfr = 0x0312, prod = 0x0924, model = 0xD001} -- Minoston Wallmote
 }
 
@@ -120,7 +119,6 @@ local zwave_multi_button = {
     require("zwave-multi-button/aeotec-keyfob"),
     require("zwave-multi-button/fibaro-keyfob"),
     require("zwave-multi-button/aeotec-minimote"),
-    require("zwave-multi-button/evalogik-keyfob"),
     require("zwave-multi-button/minoston-keyfob")
   }
 }

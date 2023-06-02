@@ -144,19 +144,6 @@ local devices = {
       number_of_buttons = 4,
       supported_button_values = {"pushed", "held", "double", "pushed_3x"}
     }
-  },
-  EVALOGIK_DIMMER_BUTTON = {
-    MATCHING_MATRIX = {
-      mfrs = 0x0312,
-      product_types = 0x7000,
-      product_ids = 0x7002
-    },
-    CONFIGS = {
-      number_of_buttons = 5,
-      supported_button_values = {"double", "pushed", "pushed_2x", "pushed_3x", "pushed_4x", "pushed_5x", "pushed_6x", "held",
-                                 "down", "down_2x", "down_3x", "down_4x", "down_5x", "down_6x", "down_hold",
-                                 "up", "up_2x", "up_3x", "up_4x", "up_5x", "up_6x", "up_hold"}
-    }
   }
 }
 
