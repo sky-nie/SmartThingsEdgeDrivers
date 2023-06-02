@@ -224,7 +224,7 @@ local devices = {
       {parameter_number = 6, size = 1, configuration_value = 20},
       {parameter_number = 7, size = 1, configuration_value = 0},
       {parameter_number = 8, size = 1, configuration_value = 255},
-      {parameter_number = 9, size = 1, configuration_value = 1},
+      {parameter_number = 9, size = 1, configuration_value = 0},
       {parameter_number = 10, size = 1, configuration_value = 2},
       {parameter_number = 11, size = 1, configuration_value = 2},
       {parameter_number = 12, size = 1, configuration_value = 2},
