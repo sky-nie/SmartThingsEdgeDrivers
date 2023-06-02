@@ -60,8 +60,7 @@ local map_key_attribute_to_capability = {
   [CentralScene.key_attributes.KEY_PRESSED_2_TIMES] = capabilities.button.button.double,
   [CentralScene.key_attributes.KEY_PRESSED_3_TIMES] = capabilities.button.button.pushed_3x,
   [CentralScene.key_attributes.KEY_PRESSED_4_TIMES] = capabilities.button.button.pushed_4x,
-  [CentralScene.key_attributes.KEY_PRESSED_5_TIMES] = capabilities.button.button.pushed_5x,
-  [CentralScene.key_attributes.KEY_PRESSED_6_TIMES] = capabilities.button.button.pushed_6x,
+  [CentralScene.key_attributes.KEY_PRESSED_5_TIMES] = capabilities.button.button.pushed_5x
 }
 
 local function central_scene_notification_handler(self, device, cmd)
