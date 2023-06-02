@@ -95,12 +95,18 @@ zwaveManufacturer:
     productType: 0xAC01
     productId: 0x4002
     deviceProfileName: switch-level-plug
+  - id: 0312/AC01/0097
+    deviceLabel: New One Outlet 1
+    manufacturerId: 0x0312
+    productType: 0xAC01
+    productId: 0x0097
+    deviceProfileName: dual-switch
   - id: 0312/FF01/FF97
     deviceLabel: Minoston Outlet 1
     manufacturerId: 0x0312
     productType: 0xFF01
     productId: 0xFF97
-    deviceProfileName: switch-binary
+    deviceProfileName: dual-switch
   - id: "GE/Switch/01"
     deviceLabel: GE Switch 01
     manufacturerId: 0x0063
@@ -1001,12 +1007,6 @@ zwaveManufacturer:
     manufacturerId: 0x010F
     productType: 0x0102
     deviceProfileName: fibaro-dimmer-2
-  - id: 0312/AC01/0097
-    deviceLabel: New One Outlet 1
-    manufacturerId: 0x0312
-    productType: 0xAC01
-    productId: 0x0097
-    deviceProfileName: dual-switch
 zwaveGeneric:
   - id: "GenericSwitch/1"
     deviceLabel: Switch
