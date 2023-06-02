@@ -1,0 +1,87 @@
+name: dual-switch-pr
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch1
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+preferences:
+  - title: "LED Indicator Mode"
+    name: "configParam1"
+    description: ""
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0 : "On When On"
+        1 : "Off When On"
+        2 : "Always On"
+        3 : "Always Off"
+      default: 0
+  - title: "Auto Turn-Off Timer for Left"
+    name: "configParam2"
+    description: "0, Disabled; 1 - 65535 minutes"
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 65535
+      default: 0
+  - title: "Auto Turn-Off Timer for Right"
+    name: "configParam3"
+    description: "0, Disabled; 1 - 65535 minutes"
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 65535
+      default: 0
+  - title: "Auto Turn-On Timer for Left"
+    name: "configParam4"
+    description: "0, Disabled; 1 - 65535 minutes"
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 65535
+      default: 0
+  - title: "Auto Turn-On Timer for Right"
+    name: "configParam5"
+    description: "0, Disabled; 1 - 65535 minutes"
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 65535
+      default: 0
+  - title: "Power Failure Recovery"
+    name: "configParam6"
+    description: ""
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0 : "Turn Off"
+        1 : "Turn On"
+        2 : "Restore Last State"
+      default: 2
+  - title: "LED brightness Mode"
+    name: "configParam7"
+    description: ""
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0 : "Bright"
+        1 : "Medium"
+        2 : "Low"
+      default: 2
